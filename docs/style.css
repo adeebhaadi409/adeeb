@@ -1,0 +1,173 @@
+/* ---------- Colour palette (CSS variables) ---------- */
+:root {
+  --cyan: #22b8cf;
+  --cyan-light: #e3f8fb;
+  --black: #111111;
+  --white: #ffffff;
+  --grey: #555555;
+}
+
+/* ---------- Universal selector: reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- Element selector: typography ---------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+h1 { font-size: 3rem; letter-spacing: 1px; }
+h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+h3 { font-size: 1.2rem; margin-bottom: 0.4rem; color: var(--cyan); }
+p  { color: var(--grey); }
+ul { padding-left: 1.2rem; color: var(--grey); }
+
+/* ---------- Navigation bar (class selectors) ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--black);
+  z-index: 10;
+}
+
+.logo {
+  color: var(--white);
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+/* Descendant selector + pseudo-class */
+.navbar a {
+  color: var(--white);
+  text-decoration: none;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.navbar a:hover {
+  color: var(--cyan);
+  border-color: var(--cyan);
+}
+
+/* ---------- ID selectors ---------- */
+#hero {
+  text-align: center;
+  padding: 5rem 1rem;
+  color: var(--white);
+  background-color: var(--black);
+  animation: fadeDown 1s ease;
+}
+
+#hero .tagline {
+  margin-top: 0.5rem;
+  color: var(--cyan);
+  font-size: 1.2rem;
+}
+
+#contact {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+#contact p {
+  color: var(--cyan);
+}
+
+/* ---------- Layout ---------- */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+/* Child selector: underline only on section headings */
+section > h2 {
+  border-left: 5px solid var(--cyan);
+  padding-left: 0.6rem;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background-color: var(--white);
+  border: 1px solid #e5e5e5;
+  border-top: 4px solid var(--cyan);
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(34, 184, 207, 0.25);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+/* Feature cards get a soft cyan background */
+.feature {
+  background-color: var(--cyan-light);
+  text-align: center;
+}
+
+/* Multiple classes / attribute-style grouping */
+.meta {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+/* First-child pseudo-class */
+li:first-child {
+  margin-top: 0;
+}
+
+/* ---------- Subtle animation ---------- */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeUp 0.8s ease both;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  .navbar { flex-direction: column; gap: 0.5rem; }
+  h1 { font-size: 2.2rem; }
+}
